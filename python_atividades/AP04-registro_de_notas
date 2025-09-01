@@ -1,0 +1,36 @@
+# 1. Inicializa uma lista vazia para armazenar as notas válidas
+notas_validas = []
+
+print("--- Sistema de Registro de Notas ---")
+print("Digite as notas dos alunos (0 a 10). Digite 'fim' para terminar.")
+
+while True:
+    entrada = input("Digite a próxima nota: ")
+
+    # 2. Verifica se o usuário quer parar
+    if entrada.lower() == 'fim':
+        break  # Sai do loop
+
+    try:
+        # 3. Tenta converter a entrada para um número
+        nota = float(entrada)
+
+        # 4. Valida se a nota está no intervalo correto (0 a 10)
+        if 0 <= nota <= 10:
+            notas_validas.append(nota) # Adiciona a nota na lista
+            print(f"Nota {nota} adicionada com sucesso.")
+        else:
+            print("❌ Erro: A nota deve estar entre 0 e 10. Tente novamente.")
+
+    except ValueError:
+        # 5. Captura o erro se a entrada não for um número
+        print("❌ Erro: Entrada inválida. Por favor, insira um número ou 'fim'.")
+
+# 6. Após o loop, calcula e exibe a média
+if notas_validas: # Verifica se a lista não está vazia
+    media = sum(notas_validas) / len(notas_validas)
+    print("\n--- Resultados Finais ---")
+    print(f"Total de notas registradas: {len(notas_validas)}")
+    print(f"A média da turma é: {media:.2f}")
+else:
+    print("\nNenhuma nota válida foi registrada.")
